@@ -16,7 +16,7 @@ namespace ADO_thêm_xóa_sửa_tìm_kiếm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormDangNhap());
         }
     }
 }

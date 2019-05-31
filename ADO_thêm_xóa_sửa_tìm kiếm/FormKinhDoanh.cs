@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ADO_thêm_xóa_sửa_tìm_kiếm
 {
-    public partial class Form1 : Form
+    public partial class FormKinhDoanh : Form
     {
-        public Form1()
+        public FormKinhDoanh()
         {
             InitializeComponent();
         }

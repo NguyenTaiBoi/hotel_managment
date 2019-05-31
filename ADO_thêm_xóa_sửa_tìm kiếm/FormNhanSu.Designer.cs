@@ -1,6 +1,6 @@
 ﻿namespace ADO_thêm_xóa_sửa_tìm_kiếm
 {
-    partial class Form1
+    partial class FormNhanSu
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Text = "FormNhanSu";
         }
 
         #endregion
     }
 }
-
