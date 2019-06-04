@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class KhachHang
+    public class KhachHangDTO
     {
        
         public string MaKH { get => maKH; set => maKH = value; }
@@ -23,14 +23,14 @@ namespace DTO
         private string cmnd;
         private string gioitinh;
 
-        public KhachHang(string maKH, string hoten,int tuoi,string email,string cmnd,string gioitinh)
-        {
-            this.maKH = maKH;
-            this.hoten = hoten;
-            this.tuoi = tuoi;
-            this.email = email;
-            this.cmnd = cmnd;
-            this.gioitinh = gioitinh;
-        }
+        //public KhachHangDTO(string maKH, string hoten,int tuoi,string email,string cmnd,string gioitinh)
+        //{
+        //    this.maKH = maKH;
+        //    this.hoten = hoten;
+        //    this.tuoi = tuoi;
+        //    this.email = email;
+        //    this.cmnd = cmnd;
+        //    this.gioitinh = gioitinh;
+        //}
     }
 }

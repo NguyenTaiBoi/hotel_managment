@@ -57,7 +57,7 @@ CREATE TABLE NHANVIEN
 	[hoten] [varchar] (50) NOT NULL,
 	[ngaysinh] [date] NOT NULL,
 	[sdt] [int] NOT NULL,
-	[goitinh] [char] (4) NOT NULL,
+	[gioitinh] [char] (4) NOT NULL,
 	[cmnd] [int] NOT NULL,
 	[chucvu] [varchar] (50) NOT NULL,
 CONSTRAINT [PK_maNV] PRIMARY KEY CLUSTERED 

@@ -46,15 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="KhachHang.cs" />
-    <Compile Include="NhanVien.cs" />
-    <Compile Include="Phong.cs" />
+    <Compile Include="ChiTietPhongDTO.cs" />
+    <Compile Include="DatPhongDTO.cs" />
+    <Compile Include="DichVuDTO.cs" />
+    <Compile Include="KhachHangDTO.cs" />
+    <Compile Include="LoaiPhongDTO.cs" />
+    <Compile Include="NhanVienDTO.cs" />
+    <Compile Include="PhongDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
