@@ -133,10 +133,14 @@ namespace DAL
         {
             string query = string.Empty;
             query += "SELECT * ";
-            query += "FROM [PHONG] ";
-            query += "WHERE ([soPhong] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([loaiPhong] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([giaPhong] LIKE CONKAT ('%',@key,'%'))";
+            query += "FROM [NHANVIEN] ";
+            query += "WHERE ([maNV] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([hoten] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([ngaysinh] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([sdt] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([gioitinh] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([cmnd] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([chucvu] LIKE CONKAT ('%',@key,'%')) ";
             List<NhanVienDTO> listPhong = new List<NhanVienDTO>();
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -156,12 +160,12 @@ namespace DAL
                     catch (Exception ex)
                     {
                         con.Close();
-                        MessageBox.Show("không tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("không tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
                         return false;
                     }
                 }
             }
-            MessageBox.Show("đã tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
+            MessageBox.Show("đã tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
             return true;
         }
 
@@ -172,4 +176,4 @@ namespace DAL
     }
 
 }
-}
+
