@@ -15,6 +15,8 @@ namespace DTO
         public string Email { get => email; set => email = value; }
         public string Gioitinh { get => gioitinh; set => gioitinh = value; }
         public string Cmnd { get => cmnd; set => cmnd = value; }
+        public string Sdt { get => sdt; set => sdt = value; }
+        public string Quoctich { get => quoctich; set => quoctich = value; }
 
         private string maKH;
         private string hoten;
@@ -22,6 +24,8 @@ namespace DTO
         private string email;
         private string cmnd;
         private string gioitinh;
+        private string sdt;
+        private string quoctich;
 
         //public KhachHangDTO(string maKH, string hoten,int tuoi,string email,string cmnd,string gioitinh)
         //{
