@@ -26,5 +26,17 @@ namespace QLKS
         {
 
         }
+
+        private void đậtPhòngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDatPhong frm = new frmDatPhong();
+            frm.Show();
+        }
+
+        private void giaHạnPhòngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGiaHanPhong frm = new frmGiaHanPhong();
+            frm.Show();
+        }
     }
 }
