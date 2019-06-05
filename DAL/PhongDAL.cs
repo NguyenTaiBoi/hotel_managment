@@ -42,7 +42,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("thêm phòng thất bại", "thông báo", MessageBoxButtons.OK);
@@ -73,7 +73,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("xóa phòng thất bại", "thông báo", MessageBoxButtons.OK);
@@ -107,7 +107,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("cập nhật phòng thất bại", "thông báo", MessageBoxButtons.OK);
@@ -145,7 +145,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("không tìm thấy phòng", "thông báo", MessageBoxButtons.OK);

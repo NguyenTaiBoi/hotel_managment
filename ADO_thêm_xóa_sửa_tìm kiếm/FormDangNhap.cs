@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
+
 
 namespace ADO_thêm_xóa_sửa_tìm_kiếm
 {

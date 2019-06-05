@@ -47,7 +47,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("thêm nhân viên thất bại", "thông báo", MessageBoxButtons.OK);
@@ -78,7 +78,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("xóa nhân viên thất bại", "thông báo", MessageBoxButtons.OK);
@@ -115,7 +115,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("cập nhật nhân viên thất bại", "thông báo", MessageBoxButtons.OK);
@@ -157,7 +157,7 @@ namespace DAL
                         con.Close();
                         con.Dispose();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         MessageBox.Show("không tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);

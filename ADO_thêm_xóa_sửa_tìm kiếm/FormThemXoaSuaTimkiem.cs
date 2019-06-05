@@ -17,24 +17,5 @@ namespace ADO_thêm_xóa_sửa_tìm_kiếm
         {
             InitializeComponent();
         }
-
-     public void HienThi()
-        {
-            string sql = "select *from ";////chưa chọn bảng 
-            SqlCommand cmd = new SqlCommand();
-            SqlDataReader dtr = cmd.ExecuteReader();
-            DataTable dtb = new DataTable();
-            dtb.Load(dtr);
-            ///if( user=ketoan) ds_ketoan.datasource=dtb
-            ///the same with the others
-        }
-        public void Them(string type)
-        {
-            if (type=="LeTan")///nhan lenh insert le tan
-            {
-
-            }
-            
-        }
     }
 }

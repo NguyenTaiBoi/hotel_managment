@@ -35,3 +35,4 @@ namespace DTO
         //    this.chucvu = chucvu;
         //}
     }
+}
