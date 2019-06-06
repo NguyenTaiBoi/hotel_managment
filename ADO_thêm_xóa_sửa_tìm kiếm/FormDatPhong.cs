@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormKeToan : Form
+    public partial class FormDatPhong : Form
     {
-        public FormKeToan()
+        public FormDatPhong()
         {
             InitializeComponent();
         }
 
-        private void TextBox1_TextChanged(object sender, EventArgs e)
+        private void TxtHoTen_TextChanged(object sender, EventArgs e)
         {
 
         }

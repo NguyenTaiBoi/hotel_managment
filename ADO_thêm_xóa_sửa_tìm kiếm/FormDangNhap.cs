@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using GUI;
 
-
-namespace ADO_thêm_xóa_sửa_tìm_kiếm
+namespace GUI
 {
     public partial class FormDangNhap : Form
     {
@@ -22,6 +22,8 @@ namespace ADO_thêm_xóa_sửa_tìm_kiếm
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+            Form1 frm = new Form1();
+            frm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,6 +33,11 @@ namespace ADO_thêm_xóa_sửa_tìm_kiếm
             SqlDataAdapter adap = new SqlDataAdapter();///add câu  lệnh query vào(********)
             DataTable dtb = new System.Data.DataTable();
             adap.Fill(dtb);
+        }
+
+        private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormKeToan : Form
+    public partial class Test : Form
     {
-        public FormKeToan()
+        public Test()
         {
             InitializeComponent();
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

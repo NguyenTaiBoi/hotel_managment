@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ADO_thêm_xóa_sửa_tìm_kiếm.Properties
+namespace GUI.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace ADO_thêm_xóa_sửa_tìm_kiếm.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ADO_thêm_xóa_sửa_tìm_kiếm.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GUI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

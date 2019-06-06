@@ -133,15 +133,19 @@ namespace DAL
             return true;
         }
 
-        public bool tiemkiem(KhachHangDTO khachhang)
+        public bool tiemkiem(KhachHangDTO key)
         {
             string query = string.Empty;
             query += "SELECT * ";
             query += "FROM [KHACHHANG] ";
             query += "WHERE ([maKH] LIKE CONKAT ('%',@key,'%')) ";
             query += "OR ([cmnd] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([hoten] LIKE CONKAT ('%',@key,'%'))";
-            List<KhachHangDTO> listPhong = new List<KhachHangDTO>();
+            query += "OR ([hoten] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([tuoi] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([email] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([sdt] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([quoctich] LIKE CONKAT ('%',@key,'%')) ";
+            List<KhachHangDTO> lsKhachHang = new List<KhachHangDTO>();
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -153,7 +157,24 @@ namespace DAL
                     try
                     {
                         con.Open();
-                        cmd.ExecuteNonQuery();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                KhachHangDTO khachhang = new KhachHangDTO();
+                                khachhang.MaKH = reader["maNV"].ToString();
+                                khachhang.Hoten = reader["hoten"].ToString();
+                                khachhang.Tuoi = int.Parse(reader["ngaysinh"].ToString());
+                                khachhang.Email = reader["gioitinh"].ToString();
+                                khachhang.Cmnd = reader["cmnd"].ToString();
+                                khachhang.Sdt = reader["sdt"].ToString();
+                                khachhang.Quoctich = reader["chucvu"].ToString();
+                                lsKhachHang.Add(khachhang);
+                            }
+                        }
+
                         con.Close();
                         con.Dispose();
                     }
@@ -169,9 +190,55 @@ namespace DAL
             return true;
         }
 
-        public List<KhachHangDTO> select()
-        {
-            return null;
-        }
+        //public List<KhachHangDTO> select()
+        //{
+        //    string query = string.Empty;
+        //    query += "SELECT *";
+        //    query += "FROM [KHACHHANG]";
+
+        //    List<KhachHangDTO> lsKhachHang = new List<KhachHangDTO>();
+
+        //    using (SqlConnection con = new SqlConnection(ConnectionString))
+        //    {
+
+        //        using (SqlCommand cmd = new SqlCommand())
+        //        {
+        //            cmd.Connection = con;
+        //            cmd.CommandType = System.Data.CommandType.Text;
+        //            cmd.CommandText = query;
+
+        //            try
+        //            {
+        //                con.Open();
+        //                SqlDataReader reader = null;
+        //                reader = cmd.ExecuteReader();
+        //                if (reader.HasRows == true)
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        KhachHangDTO khachhang = new KhachHangDTO();
+        //                        khachhang.MaKH = reader["maNV"].ToString();
+        //                        khachhang.Hoten = reader["hoten"].ToString();
+        //                        khachhang.Tuoi = int.Parse(reader["ngaysinh"].ToString());
+        //                        khachhang.Email = reader["gioitinh"].ToString();
+        //                        khachhang.Cmnd = reader["cmnd"].ToString();
+        //                        khachhang.Sdt = reader["sdt"].ToString();
+        //                        khachhang.Quoctich = reader["chucvu"].ToString();
+        //                        lsKhachHang.Add(khachhang);
+        //                    }
+        //                }
+
+        //                con.Close();
+        //                con.Dispose();
+        //            }
+        //            catch (Exception)
+        //            {
+        //                con.Close();
+        //                return null;
+        //            }
+        //        }
+        //    }
+        //    return lsKhachHang;
+        //}/*
     }
 }

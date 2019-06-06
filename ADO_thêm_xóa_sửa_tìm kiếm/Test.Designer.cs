@@ -1,6 +1,6 @@
 ﻿namespace ADO_thêm_xóa_sửa_tìm_kiếm
 {
-    partial class FormThemXoaSuaTimkiem
+    partial class Test
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // FormThemXoaSuaTimkiem
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.IsMdiContainer = true;
-            this.Name = "FormThemXoaSuaTimkiem";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            this.Text = "Test";
         }
 
         #endregion
     }
 }
-

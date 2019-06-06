@@ -141,7 +141,7 @@ namespace DAL
             query += "OR ([gioitinh] LIKE CONKAT ('%',@key,'%')) ";
             query += "OR ([cmnd] LIKE CONKAT ('%',@key,'%')) ";
             query += "OR ([chucvu] LIKE CONKAT ('%',@key,'%')) ";
-            List<NhanVienDTO> listPhong = new List<NhanVienDTO>();
+            List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -153,7 +153,24 @@ namespace DAL
                     try
                     {
                         con.Open();
-                        cmd.ExecuteNonQuery();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                NhanVienDTO nhanvien = new NhanVienDTO();
+                                nhanvien.MaNV = reader["maNV"].ToString();
+                                nhanvien.Hoten = reader["hoten"].ToString();
+                                nhanvien.Ngaysinh = DateTime.Parse(reader["ngaysinh"].ToString());
+                                nhanvien.Gioitinh = reader["gioitinh"].ToString();
+                                nhanvien.Cmnd = reader["cmnd"].ToString();
+                                nhanvien.Sdt = reader["sdt"].ToString();
+                                nhanvien.Chucvu = reader["chucvu"].ToString();
+                                lsNhanVien.Add(nhanvien);
+                            }
+                        }
+
                         con.Close();
                         con.Dispose();
                     }
@@ -168,12 +185,57 @@ namespace DAL
             MessageBox.Show("đã tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
             return true;
         }
+        //    public List<NhanVienDTO> select()
+        //    {
+        //        string query = string.Empty;
+        //        query += "SELECT *";
+        //        query += "FROM [NHANVIEN]";
 
-        public List<NhanVienDTO> select()
-        {
-            return null;
-        }
+        //        List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
+
+        //        using (SqlConnection con = new SqlConnection(ConnectionString))
+        //        {
+
+        //            using (SqlCommand cmd = new SqlCommand())
+        //            {
+        //                cmd.Connection = con;
+        //                cmd.CommandType = System.Data.CommandType.Text;
+        //                cmd.CommandText = query;
+
+        //                try
+        //                {
+        //                    con.Open();
+        //                    SqlDataReader reader = null;
+        //                    reader = cmd.ExecuteReader();
+        //                    if (reader.HasRows == true)
+        //                    {
+        //                        while (reader.Read())
+        //                        {
+        //                            NhanVienDTO nhanvien = new NhanVienDTO();
+        //                            nhanvien.MaNV = reader["maNV"].ToString();
+        //                            nhanvien.Hoten = reader["hoten"].ToString();
+        //                            nhanvien.Ngaysinh =DateTime.Parse(reader["ngaysinh"].ToString());
+        //                            nhanvien.Gioitinh = reader["gioitinh"].ToString();
+        //                            nhanvien.Cmnd = reader["cmnd"].ToString();
+        //                            nhanvien.Sdt = reader["sdt"].ToString();
+        //                            nhanvien.Chucvu = reader["chucvu"].ToString();
+        //                            lsNhanVien.Add(nhanvien);
+        //                        }
+        //                    }
+
+        //                    con.Close();
+        //                    con.Dispose();
+        //                }
+        //                catch (Exception)
+        //                {
+        //                    con.Close();
+        //                    return null;
+        //                }
+        //            }
+        //        }
+        //        return lsNhanVien;
+        //    }
+        //}
     }
-
 }
 

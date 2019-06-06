@@ -37,7 +37,7 @@ ADD
 	[gioitinh] [char] (4) NOT NULL;
 
 	alter table KHACHHANG alter column cmnd char
-
+	alter table KHACHHANG alter column sdt char
 /*table Phong*/
 CREATE TABLE PHONG
 (

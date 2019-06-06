@@ -47,17 +47,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormThemXoaSuaTimkiem.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemXoaSuaTimkiem.Designer.cs">
-      <DependentUpon>FormThemXoaSuaTimkiem.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDatPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDatPhong.Designer.cs">
+      <DependentUpon>FormDatPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGiaHanPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGiaHanPhong.Designer.cs">
+      <DependentUpon>FormGiaHanPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="FormKeToan.cs">
       <SubType>Form</SubType>
@@ -91,8 +103,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLKS_databaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKS_databaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDatPhong.resx">
+      <DependentUpon>FormDatPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGiaHanPhong.resx">
+      <DependentUpon>FormGiaHanPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormKeToan.resx">
       <DependentUpon>FormKeToan.cs</DependentUpon>
@@ -100,11 +126,11 @@
     <EmbeddedResource Include="FormKinhDoanh.resx">
       <DependentUpon>FormKinhDoanh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLeTan.resx">
+      <DependentUpon>FormLeTan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormQuanLy.resx">
       <DependentUpon>FormQuanLy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormThemXoaSuaTimkiem.resx">
-      <DependentUpon>FormThemXoaSuaTimkiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -124,6 +150,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QLKS_databaseDataSet.xsc">
+      <DependentUpon>QLKS_databaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLKS_databaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLKS_databaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLKS_databaseDataSet.xss">
+      <DependentUpon>QLKS_databaseDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

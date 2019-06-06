@@ -1,4 +1,4 @@
-﻿namespace ADO_thêm_xóa_sửa_tìm_kiếm
+﻿namespace GUI
 {
     partial class FormKinhDoanh
     {

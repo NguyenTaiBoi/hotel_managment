@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
-namespace ADO_thêm_xóa_sửa_tìm_kiếm
+namespace GUI
 {
-    public partial class FormThemXoaSuaTimkiem : Form
+    public partial class FormGiaHanPhong : Form
     {
-        public FormThemXoaSuaTimkiem()
+        public FormGiaHanPhong()
         {
             InitializeComponent();
+        }
+
+        private void TxtHoTen_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

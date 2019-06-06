@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormKeToan : Form
+    public partial class Form1 : Form
     {
-        public FormKeToan()
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void TextBox1_TextChanged(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

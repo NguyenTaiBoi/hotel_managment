@@ -22,5 +22,16 @@ namespace ADO_thêm_xóa_sửa_tìm_kiếm.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MR-WOODPECKER\\SQLEXPRESS;Initial Catalog=QLKS_database;Integrated Sec" +
+            "urity=True")]
+        public string QLKS_databaseConnectionString {
+            get {
+                return ((string)(this["QLKS_databaseConnectionString"]));
+            }
+        }
     }
 }

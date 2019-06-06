@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ADO_thêm_xóa_sửa_tìm_kiếm
+namespace GUI
 {
     public partial class FormNhanSu : Form
     {

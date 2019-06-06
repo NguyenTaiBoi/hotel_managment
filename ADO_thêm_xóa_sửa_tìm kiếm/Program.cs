@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ADO_thêm_xóa_sửa_tìm_kiếm
+namespace GUI
 {
     static class Program
     {
