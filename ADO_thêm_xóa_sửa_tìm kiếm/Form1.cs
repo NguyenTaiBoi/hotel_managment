@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
+using BUS;
 
 namespace GUI
 {
@@ -17,14 +19,19 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            KhachHangDTO kh = new KhachHangDTO();
+            kh.MaKH = textBox1.Text;
+            kh.Hoten = textBox2.Text;
+            kh.Tuoi = int.Parse(textBox3.Text);
+            kh.Email = textBox4.Text;
+            kh.Cmnd = textBox5.Text;
+            kh.Sdt = textBox6.Text;
+            kh.Quoctich = textBox7.Text;
+            kh.Gioitinh = textBox8.Text;
+            KhachHangBUS khbus = new KhachHangBUS();
+            khbus.them(kh);
         }
     }
 }

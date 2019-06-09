@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace DAL
 {
-    class KhachHangDAL
+   public class KhachHangDAL
     {
         private string connectionString;
 
         public string ConnectionString { get => connectionString; set => connectionString = value; }
         public KhachHangDAL()
         {
-            connectionString = ConfigurationManager.AppSettings["connectionString"];
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
 
         public bool them(KhachHangDTO khachhang)
         {
             string query = string.Empty;
-            query += "INSERT INTO [KHACHHANG] ([maKH], [hoten], [tuoi], [email], [cmnd], [sdt], [quoctich], [gioitinh] )";
-            query += "VALUES (@maKH, @hoten, @tuoi, @email, @sdt, @quoctich, @gioitinh)";
+            query += "INSERT INTO [KHACHHANG] ([maKH], [hoten], [tuoi], [email], [cmnd], [sdt], [quoctich], [gioitinh]) ";
+            query += "VALUES (@maKH, @hoten, @tuoi, @email,@cmnd, @sdt, @quoctich, @gioitinh)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 

@@ -11,19 +11,19 @@ using System.Windows.Forms;
 
 namespace DAL
 {
-    class NhanVienDAL
+   public class NhanVienDAL
     {
         private string connectionString;
 
         public string ConnectionString { get => connectionString; set => connectionString = value; }
         public NhanVienDAL()
         {
-            connectionString = ConfigurationManager.AppSettings["connectionString"];
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
         public bool them(NhanVienDTO nhanvien)
         {
             string query = string.Empty;
-            query += "INSERT INTO [NHANVIEN] ([maNV], [hoten], [ngaysinh],[sdt],[gioitinh],[cmnd],[chucvu])";
+            query += "INSERT INTO [NHANVIEN] ([maNV], [hoten], [ngaysinh],[sdt],[gioitinh],[cmnd],[chucvu]) ";
             query += "VALUES (@maNV,@hoten,@ngaysinh,@sdt,@gioitinh,@cmnd,@chucvu)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {

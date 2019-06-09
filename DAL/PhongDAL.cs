@@ -17,12 +17,12 @@ namespace DAL
         public string ConnectionString { get => connectionString; set => connectionString = value; }
         public PhongDAL()
         {
-            connectionString = ConfigurationManager.AppSettings["connectionString"];
+            connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
         public bool them(PhongDTO phong)
         {
             string query = string.Empty;
-            query += "INSERT INTO [PHONG] ([soPhong], [loaiPhong], [giaPhong])";
+            query += "INSERT INTO [PHONG] ([soPhong], [loaiPhong], [giaPhong]) ";
             query += "VALUES (@soPhong,@loaiPhong,@giaPhong)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {

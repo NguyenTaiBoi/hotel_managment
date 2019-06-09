@@ -21,18 +21,18 @@ namespace GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
             Form1 frm = new Form1();
             frm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            SqlConnection con = new SqlConnection("");///add data source vào (***********)
-            SqlDataAdapter adap = new SqlDataAdapter();///add câu  lệnh query vào(********)
-            DataTable dtb = new System.Data.DataTable();
-            adap.Fill(dtb);
+            //this.Hide();
+            //SqlConnection con = new SqlConnection("");///add data source vào (***********)
+            //SqlDataAdapter adap = new SqlDataAdapter();///add câu  lệnh query vào(********)
+            //DataTable dtb = new System.Data.DataTable();
+            //adap.Fill(dtb);
         }
 
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
