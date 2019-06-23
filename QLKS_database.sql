@@ -1,4 +1,4 @@
-USE [master]
+﻿USE [master]
 GO
 
 WHILE EXISTS(select NULL from sys.databases where name='QLKS')
@@ -65,7 +65,11 @@ CONSTRAINT [PK_maNV] PRIMARY KEY CLUSTERED
 	[maNV] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
+ALTER TABLE NHANVIEN ADD [mkNV] [char](50)
+alter table NHANVIEN alter column sdt char(12)
+alter table NHANVIEN alter column cmnd char(50)
+insert into NHANVIEN(maNV,hoten,ngaysinh,sdt,gioitinh,cmnd,chucvu,mkNV) 
+values ('175','nguyen van a','1/1/2000','090090090','nam','52423423','Quản lý','175')
 /*table Dich Vu*/
 CREATE TABLE DICHVU
 (

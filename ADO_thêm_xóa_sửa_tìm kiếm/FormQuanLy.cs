@@ -17,6 +17,9 @@ namespace GUI
             InitializeComponent();
         }
 
-        
+        private void ThếmNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -23,8 +23,8 @@ namespace DAL
         public bool them(NhanVienDTO nhanvien)
         {
             string query = string.Empty;
-            query += "INSERT INTO [NHANVIEN] ([maNV], [hoten], [ngaysinh],[sdt],[gioitinh],[cmnd],[chucvu]) ";
-            query += "VALUES (@maNV,@hoten,@ngaysinh,@sdt,@gioitinh,@cmnd,@chucvu)";
+            query += "INSERT INTO [NHANVIEN] ([maNV], [hoten], [ngaysinh],[sdt],[gioitinh],[cmnd],[chucvu],[mkNV]) ";
+            query += "VALUES (@maNV,@hoten,@ngaysinh,@sdt,@gioitinh,@cmnd,@chucvu,@mkNV)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -40,6 +40,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@gioitinh", nhanvien.Gioitinh);
                     cmd.Parameters.AddWithValue("@cmnd", nhanvien.Cmnd);
                     cmd.Parameters.AddWithValue("@chucvu", nhanvien.Chucvu);
+                    cmd.Parameters.AddWithValue("@mkNV", nhanvien.MkNV);
                     try
                     {
                         con.Open();
@@ -93,7 +94,7 @@ namespace DAL
         public bool sua(NhanVienDTO nhanvien)
         {
             string query = string.Empty;
-            query += "UPDATE [NHANVIEN] SET [hoten] = @hoten, [ngaysinh]=@ngaysinh,[sdt]=@sdt,[gioitinh]=@gioitinh,[cmnd]=@cmnd,[chucvu]=@chucvu WHERE [soPhong] = @soPhong";
+            query += "UPDATE [NHANVIEN] SET [hoten] = @hoten, [ngaysinh]=@ngaysinh,[sdt]=@sdt,[gioitinh]=@gioitinh,[cmnd]=@cmnd,[chucvu]=@chucvu,[mkNV]=@mkNV WHERE [maNV] = @maNV";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -108,6 +109,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@gioitinh", nhanvien.Gioitinh);
                     cmd.Parameters.AddWithValue("@cmnd", nhanvien.Cmnd);
                     cmd.Parameters.AddWithValue("@chucvu", nhanvien.Chucvu);
+                    cmd.Parameters.AddWithValue("@mkNV", nhanvien.MkNV);
                     try
                     {
                         con.Open();

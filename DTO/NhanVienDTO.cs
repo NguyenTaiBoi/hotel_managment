@@ -15,6 +15,7 @@ namespace DTO
         private string gioitinh;
         private string cmnd;
         private string chucvu;
+        private string mkNV;
 
         public string MaNV { get => maNV; set => maNV = value; }
         public string Hoten { get => hoten; set => hoten = value; }
@@ -23,6 +24,7 @@ namespace DTO
         public string Gioitinh { get => gioitinh; set => gioitinh = value; }
         public string Cmnd { get => cmnd; set => cmnd = value; }
         public string Chucvu { get => chucvu; set => chucvu = value; }
+        public string MkNV { get => mkNV; set => mkNV = value; }
 
         //public NhanVienDTO(string maNV, string hoten, DateTime ngaysinh,string sdt,string gioitinh,string cmnd,string chucvu)
         //{

@@ -9,35 +9,45 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using GUI;
+using DTO;
+
+
 
 namespace GUI
 {
     public partial class FormDangNhap : Form
     {
+       // NhanVienDTO nv = new NhanVienDTO();
         public FormDangNhap()
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        //NhanVienDTO nv;
+        string quyen;
+        private void Button1_Click_1(object sender, EventArgs e)
         {
-            //this.Close();
-            Form1 frm = new Form1();
-            frm.Show();
-        }
+            
+            //nv = new NhanVienDTO();
+            //quyen=nv.Chucvu ;
+            SqlConnection con = new SqlConnection(@"Data Source=MR-WOODPECKER\SQLEXPRESS;Initial Catalog=QLKS;Integrated Security=True");
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM NHANVIEN WHERE maNV= '" + txtUser.Text + "' AND mkNV='" + txtPass.Text + "' ", con);
+            DataTable dt = new System.Data.DataTable();
+            sda.Fill(dt);
+           
+            if (dt.Rows.Count > 0)
+            {
+               
+                this.Hide();
+                if (dt.Rows[0][6].ToString()== "Manager")
+                {
+                    FormQuanLy fql = new FormQuanLy();
+                    fql.Show();
+                }
+            }
+            else
+            {
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            //SqlConnection con = new SqlConnection("");///add data source vào (***********)
-            //SqlDataAdapter adap = new SqlDataAdapter();///add câu  lệnh query vào(********)
-            //DataTable dtb = new System.Data.DataTable();
-            //adap.Fill(dtb);
-        }
-
-        private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
+            }
         }
     }
 }
