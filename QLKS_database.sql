@@ -69,7 +69,8 @@ ALTER TABLE NHANVIEN ADD [mkNV] [char](50)
 alter table NHANVIEN alter column sdt char(12)
 alter table NHANVIEN alter column cmnd char(50)
 insert into NHANVIEN(maNV,hoten,ngaysinh,sdt,gioitinh,cmnd,chucvu,mkNV) 
-values ('175','nguyen van a','1/1/2000','090090090','nam','52423423','Quản lý','175')
+values ('175','nguyen van a','1/1/2000','090090090','nam','52423423','Manager','175')
+select *from NHANVIEN
 /*table Dich Vu*/
 CREATE TABLE DICHVU
 (

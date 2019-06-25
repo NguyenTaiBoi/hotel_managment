@@ -131,7 +131,7 @@ namespace DAL
 
 
 
-        public bool timkiem(NhanVienDTO key)
+        public List<NhanVienDTO> timkiem()
         {
             string query = string.Empty;
             query += "SELECT * ";
@@ -143,7 +143,9 @@ namespace DAL
             query += "OR ([gioitinh] LIKE CONKAT ('%',@key,'%')) ";
             query += "OR ([cmnd] LIKE CONKAT ('%',@key,'%')) ";
             query += "OR ([chucvu] LIKE CONKAT ('%',@key,'%')) ";
+
             List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
+
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -169,6 +171,7 @@ namespace DAL
                                 nhanvien.Cmnd = reader["cmnd"].ToString();
                                 nhanvien.Sdt = reader["sdt"].ToString();
                                 nhanvien.Chucvu = reader["chucvu"].ToString();
+                                //nhanvien.Chucvu = reader["mkNV"].ToString();
                                 lsNhanVien.Add(nhanvien);
                             }
                         }
@@ -179,14 +182,17 @@ namespace DAL
                     catch (Exception)
                     {
                         con.Close();
-                        MessageBox.Show("không tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
-                        return false;
+                        //MessageBox.Show("không tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
+                        return null;
                     }
                 }
             }
-            MessageBox.Show("đã tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
-            return true;
+            //MessageBox.Show("đã tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
+            return lsNhanVien;
         }
+
+
+
         //    public List<NhanVienDTO> select()
         //    {
         //        string query = string.Empty;

@@ -142,10 +142,10 @@
             // 
             // thếmNhânViênToolStripMenuItem
             // 
-            this.thếmNhânViênToolStripMenuItem.Name = "thếmNhânViênToolStripMenuItem";
+            this.thếmNhânViênToolStripMenuItem.Name = "thêmNhânViênToolStripMenuItem";
             this.thếmNhânViênToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thếmNhânViênToolStripMenuItem.Text = "thêm nhân viên";
-            this.thếmNhânViênToolStripMenuItem.Click += new System.EventHandler(this.ThếmNhânViênToolStripMenuItem_Click);
+            this.thếmNhânViênToolStripMenuItem.Click += new System.EventHandler(this.ThêmNhânViênToolStripMenuItem_Click);
             // 
             // quảnLýToolStripMenuItem
             // 
