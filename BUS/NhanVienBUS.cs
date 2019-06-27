@@ -30,9 +30,13 @@ namespace BUS
             bool kq = nvdal.sua(nv);
             return kq;
         }
-        public List<NhanVienDTO>timkiem()
+        public List<NhanVienDTO>select()
         {
-            return nvdal.timkiem();
+            return nvdal.select();
+        }
+        public List<NhanVienDTO>timkiem(string key)
+        {
+            return nvdal.timkiem(key);
         }
     }
 }

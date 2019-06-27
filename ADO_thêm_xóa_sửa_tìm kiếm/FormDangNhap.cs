@@ -23,7 +23,7 @@ namespace GUI
             InitializeComponent();
         }
         //NhanVienDTO nv;
-        string quyen;
+     
         private void Button1_Click_1(object sender, EventArgs e)
         {
             

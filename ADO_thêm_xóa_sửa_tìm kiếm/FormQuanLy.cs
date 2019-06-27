@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ADO_thêm_xóa_sửa_tìm_kiếm;
 
 namespace GUI
 {
@@ -20,6 +21,13 @@ namespace GUI
         private void ThêmNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void QuảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormThemXoaSuaNhanVien ftxs = new FormThemXoaSuaNhanVien();
+            ftxs.Show();
         }
     }
 }

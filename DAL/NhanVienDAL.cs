@@ -110,6 +110,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@cmnd", nhanvien.Cmnd);
                     cmd.Parameters.AddWithValue("@chucvu", nhanvien.Chucvu);
                     cmd.Parameters.AddWithValue("@mkNV", nhanvien.MkNV);
+                    cmd.Parameters.AddWithValue("@maNV", nhanvien.MaNV);
                     try
                     {
                         con.Open();
@@ -131,29 +132,30 @@ namespace DAL
 
 
 
-        public List<NhanVienDTO> timkiem()
+        public List<NhanVienDTO> timkiem(string key)
         {
             string query = string.Empty;
-            query += "SELECT * ";
-            query += "FROM [NHANVIEN] ";
-            query += "WHERE ([maNV] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([hoten] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([ngaysinh] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([sdt] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([gioitinh] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([cmnd] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([chucvu] LIKE CONKAT ('%',@key,'%')) ";
+            query += "SELECT [maNV],[hoten],[ngaysinh],[sdt],[gioitinh],[cmnd],[chucvu]";
+            query += " FROM [NHANVIEN";
+            query += " WHERE ([maNV] LIKE CONCAT ('%',@key,'%'))";
+            query += " OR ([hoten] LIKE CONCAT ('%',@key,'%'))";
+            query += " OR ([ngaysinh] LIKE CONCAT ('%',@key,'%'))";
+            query += " OR ([sdt] LIKE CONCAT ('%',@key,'%'))";
+            query += " OR ([gioitinh] LIKE CONCAT ('%',@key,'%'))";
+            query += " OR ([cmnd] LIKE CONCAT ('%',@key,'%'))";
+            query += " OR ([chucvu] LIKE CONCAT ('%',@key,'%'))";
+            //query += " OR ([mkNV] LIKE CONCAT ('%',@key,'%'))";
 
             List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
-
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@key", key);
                     try
                     {
                         con.Open();
@@ -171,7 +173,7 @@ namespace DAL
                                 nhanvien.Cmnd = reader["cmnd"].ToString();
                                 nhanvien.Sdt = reader["sdt"].ToString();
                                 nhanvien.Chucvu = reader["chucvu"].ToString();
-                                //nhanvien.Chucvu = reader["mkNV"].ToString();
+                                //nhanvien.MkNV = reader["mkNV"].ToString();
                                 lsNhanVien.Add(nhanvien);
                             }
                         }
@@ -187,63 +189,64 @@ namespace DAL
                     }
                 }
             }
-            //MessageBox.Show("đã tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
+            MessageBox.Show("đã tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
             return lsNhanVien;
         }
 
 
 
-        //    public List<NhanVienDTO> select()
-        //    {
-        //        string query = string.Empty;
-        //        query += "SELECT *";
-        //        query += "FROM [NHANVIEN]";
+        public List<NhanVienDTO> select()
+        {
+            string query = string.Empty;
+            query += "SELECT *";
+            query += "FROM [NHANVIEN]";
 
-        //        List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
+            List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
 
-        //        using (SqlConnection con = new SqlConnection(ConnectionString))
-        //        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
 
-        //            using (SqlCommand cmd = new SqlCommand())
-        //            {
-        //                cmd.Connection = con;
-        //                cmd.CommandType = System.Data.CommandType.Text;
-        //                cmd.CommandText = query;
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
 
-        //                try
-        //                {
-        //                    con.Open();
-        //                    SqlDataReader reader = null;
-        //                    reader = cmd.ExecuteReader();
-        //                    if (reader.HasRows == true)
-        //                    {
-        //                        while (reader.Read())
-        //                        {
-        //                            NhanVienDTO nhanvien = new NhanVienDTO();
-        //                            nhanvien.MaNV = reader["maNV"].ToString();
-        //                            nhanvien.Hoten = reader["hoten"].ToString();
-        //                            nhanvien.Ngaysinh =DateTime.Parse(reader["ngaysinh"].ToString());
-        //                            nhanvien.Gioitinh = reader["gioitinh"].ToString();
-        //                            nhanvien.Cmnd = reader["cmnd"].ToString();
-        //                            nhanvien.Sdt = reader["sdt"].ToString();
-        //                            nhanvien.Chucvu = reader["chucvu"].ToString();
-        //                            lsNhanVien.Add(nhanvien);
-        //                        }
-        //                    }
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                NhanVienDTO nhanvien = new NhanVienDTO();
+                                nhanvien.MaNV = reader["maNV"].ToString();
+                                nhanvien.Hoten = reader["hoten"].ToString();
+                                nhanvien.Ngaysinh = DateTime.Parse(reader["ngaysinh"].ToString());
+                                nhanvien.Gioitinh = reader["gioitinh"].ToString();
+                                nhanvien.Cmnd = reader["cmnd"].ToString();
+                                nhanvien.Sdt = reader["sdt"].ToString();
+                                nhanvien.Chucvu = reader["chucvu"].ToString();
+                                nhanvien.MkNV = reader["mkNV"].ToString();
+                                lsNhanVien.Add(nhanvien);
+                            }
+                        }
 
-        //                    con.Close();
-        //                    con.Dispose();
-        //                }
-        //                catch (Exception)
-        //                {
-        //                    con.Close();
-        //                    return null;
-        //                }
-        //            }
-        //        }
-        //        return lsNhanVien;
-        //    }
-        //}
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return lsNhanVien;
+        }
     }
 }
+
 
