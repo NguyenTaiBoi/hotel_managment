@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
+using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows.Forms;
 
 
+
 namespace DAL
 {
-   public class NhanVienDAL
+    public class NhanVienDAL
     {
         private string connectionString;
 
@@ -129,72 +131,6 @@ namespace DAL
             MessageBox.Show("cập nhật nhân viên thành công", "thông báo", MessageBoxButtons.OK);
             return true;
         }
-
-
-
-        public List<NhanVienDTO> timkiem(string key)
-        {
-            string query = string.Empty;
-            query += "SELECT [maNV],[hoten],[ngaysinh],[sdt],[gioitinh],[cmnd],[chucvu]";
-            query += " FROM [NHANVIEN";
-            query += " WHERE ([maNV] LIKE CONCAT ('%',@key,'%'))";
-            query += " OR ([hoten] LIKE CONCAT ('%',@key,'%'))";
-            query += " OR ([ngaysinh] LIKE CONCAT ('%',@key,'%'))";
-            query += " OR ([sdt] LIKE CONCAT ('%',@key,'%'))";
-            query += " OR ([gioitinh] LIKE CONCAT ('%',@key,'%'))";
-            query += " OR ([cmnd] LIKE CONCAT ('%',@key,'%'))";
-            query += " OR ([chucvu] LIKE CONCAT ('%',@key,'%'))";
-            //query += " OR ([mkNV] LIKE CONCAT ('%',@key,'%'))";
-
-            List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
-
-            using (SqlConnection con = new SqlConnection(ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = con;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.CommandText = query;
-                    cmd.Parameters.AddWithValue("@key", key);
-                    try
-                    {
-                        con.Open();
-                        SqlDataReader reader = null;
-                        reader = cmd.ExecuteReader();
-                        if (reader.HasRows == true)
-                        {
-                            while (reader.Read())
-                            {
-                                NhanVienDTO nhanvien = new NhanVienDTO();
-                                nhanvien.MaNV = reader["maNV"].ToString();
-                                nhanvien.Hoten = reader["hoten"].ToString();
-                                nhanvien.Ngaysinh = DateTime.Parse(reader["ngaysinh"].ToString());
-                                nhanvien.Gioitinh = reader["gioitinh"].ToString();
-                                nhanvien.Cmnd = reader["cmnd"].ToString();
-                                nhanvien.Sdt = reader["sdt"].ToString();
-                                nhanvien.Chucvu = reader["chucvu"].ToString();
-                                //nhanvien.MkNV = reader["mkNV"].ToString();
-                                lsNhanVien.Add(nhanvien);
-                            }
-                        }
-
-                        con.Close();
-                        con.Dispose();
-                    }
-                    catch (Exception)
-                    {
-                        con.Close();
-                        //MessageBox.Show("không tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
-                        return null;
-                    }
-                }
-            }
-            MessageBox.Show("đã tìm thấy nhân viên", "thông báo", MessageBoxButtons.OK);
-            return lsNhanVien;
-        }
-
-
-
         public List<NhanVienDTO> select()
         {
             string query = string.Empty;
@@ -238,6 +174,70 @@ namespace DAL
                         con.Dispose();
                     }
                     catch (Exception)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return lsNhanVien;
+        }
+
+        public List<NhanVienDTO> timkiem(string key)
+        {
+            string query = string.Empty;
+            query += " SELECT [hoten],[maNV],[ngaysinh],[sdt],[cmnd],[gioitinh],[chucvu],[mkNV]";
+            query += " FROM [NHANVIEN]";
+            query += " WHERE ([maNV] LIKE CONCAT('%',@key,'%'))";
+            query += " OR ([hoten] LIKE CONCAT('%',@key,'%'))";
+            query += " OR ([ngaysinh] LIKE CONCAT('%',@key,'%'))";
+            query += " OR ([sdt] LIKE CONCAT('%',@key,'%'))";
+            query += " OR ([cmnd] LIKE CONCAT('%',@key,'%'))";
+            query += " OR ([gioitinh] LIKE CONCAT('%',@key,'%'))";
+            query += " OR ([chucvu] LIKE CONCAT('%',@key,'%'))";
+           // query += " OR ([mkNV] LIKE CONCAT('%',@key,'%'))";
+            List<NhanVienDTO> lsNhanVien = new List<NhanVienDTO>();
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@key", key);
+
+                    try
+                    {
+                        con.Open();
+
+                        SqlDataReader reader = null;
+                        //cmd.ExecuteNonQuery();
+                        reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                NhanVienDTO nv = new NhanVienDTO();
+                                nv.MaNV = reader["maNV"].ToString();
+                                nv.Hoten = reader["hoten"].ToString();
+                                nv.Ngaysinh = DateTime.Parse(reader["ngaysinh"].ToString());
+                                nv.Sdt = reader["sdt"].ToString();
+                                nv.Gioitinh = reader["gioitinh"].ToString();
+                                nv.Cmnd = reader["cmnd"].ToString();
+                                nv.Chucvu = reader["chucvu"].ToString();
+                                nv.MkNV = reader["mkNV"].ToString();
+                                lsNhanVien.Add(nv);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+
+
+                    catch (Exception ex)
                     {
                         con.Close();
                         return null;

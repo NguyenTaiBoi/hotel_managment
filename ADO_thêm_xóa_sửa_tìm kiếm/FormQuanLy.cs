@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ADO_thêm_xóa_sửa_tìm_kiếm;
+using GUI;
 
 namespace GUI
 {

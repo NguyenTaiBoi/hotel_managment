@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using DTO;
 using BUS;
@@ -67,7 +68,8 @@ namespace GUI
         {
             if (lsnv == null)
             {
-                MessageBox.Show("không tìm thấy nhân viên");
+                MessageBox.Show("Có lỗi xảy ra khi tìm kiếm nhân viên");
+                //MessageBox.Show("không tìm thấy nhân viên");
                 return;
             }
             dgvNhanVien.DataSource = null;
@@ -101,5 +103,7 @@ namespace GUI
         {
 
         }
+
+        
     }
 }

@@ -34,7 +34,7 @@ namespace BUS
         {
             return nvdal.select();
         }
-        public List<NhanVienDTO>timkiem(string key)
+        public List<NhanVienDTO> timkiem(string key)
         {
             return nvdal.timkiem(key);
         }
