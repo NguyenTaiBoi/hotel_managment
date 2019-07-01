@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
+using BUS;
 
 namespace GUI
 {
@@ -39,6 +41,7 @@ namespace GUI
             btLuu.Visible = false;
             btThem.Visible = true;
             btHuy.Enabled = false;
+            btDanhSachPhong.Enabled = false;
         }
 
         private void btThem_Click(object sender, EventArgs e)
@@ -53,11 +56,13 @@ namespace GUI
             btLuu.Visible = true;
             btThem.Visible = false;
             btHuy.Enabled = true;
+            btDanhSachPhong.Enabled = true;
             txtCMND.Clear();
             txtHoTen.Clear();
             txtQuocTich.Clear();
             txtSDT.Clear();
             txtTuoi.Clear();
+            txtPhong.Clear();
             dtpNgayDatPhong.Value = System.DateTime.Now;
             dtpNgayTraPhong.Value = dtpNgayDatPhong.Value;
         }
@@ -113,14 +118,14 @@ namespace GUI
                 txtQuocTich.Focus();
                 return;
             }
-            /*
+            
             if (txtPhong.Text == "")
             {
                 MessageBox.Show("Xin chọn phòng cho khách hàng");
                 btDanhSachPhong.Focus();
                 return;
             }
-            */
+            
             if (true)
             {
                 MessageBox.Show("Đặt phòng thành công");
@@ -134,6 +139,7 @@ namespace GUI
                 btLuu.Visible = false;
                 btThem.Visible = true;
                 btHuy.Enabled = false;
+                btDanhSachPhong.Enabled = false;
             }
             else
             {
@@ -145,5 +151,16 @@ namespace GUI
         {
 
         }
+
+        private void btDanhSachPhong_Click(object sender, EventArgs e)
+        { 
+            FormChonPhong formcp = new FormChonPhong();
+            formcp.Show();
+            PhongBUS phongbus = new PhongBUS();
+            List<PhongDTO> lsp = phongbus.select();
+            formcp.Load_DatagridviewChonPhong(lsp);
+            txtPhong.Text = FormChonPhong.ValueChonPhong; //Need fix. Không hiện giá trị ngay lập tức mà phải nhấn vào lable DS Phòng để hiện giá trị của Phòng đã chọn
+        }
+
     }
 }

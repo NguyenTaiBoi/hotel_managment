@@ -62,6 +62,7 @@
             this.btHuy.TabIndex = 25;
             this.btHuy.Text = "Hủy";
             this.btHuy.UseVisualStyleBackColor = true;
+            this.btHuy.Click += new System.EventHandler(this.btHuy_Click);
             // 
             // btDanhSachPhong
             // 
@@ -73,11 +74,12 @@
             this.btDanhSachPhong.TabIndex = 24;
             this.btDanhSachPhong.Text = "Danh sách phòng";
             this.btDanhSachPhong.UseVisualStyleBackColor = true;
+            this.btDanhSachPhong.Click += new System.EventHandler(this.btDanhSachPhong_Click);
             // 
             // btThem
             // 
             this.btThem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btThem.Location = new System.Drawing.Point(669, 568);
+            this.btThem.Location = new System.Drawing.Point(670, 568);
             this.btThem.Margin = new System.Windows.Forms.Padding(4);
             this.btThem.Name = "btThem";
             this.btThem.Size = new System.Drawing.Size(133, 49);
@@ -85,6 +87,7 @@
             this.btThem.Text = "Tạo mới";
             this.btThem.UseVisualStyleBackColor = true;
             this.btThem.Visible = false;
+            this.btThem.Click += new System.EventHandler(this.btThem_Click);
             // 
             // btLuu
             // 
@@ -96,6 +99,7 @@
             this.btLuu.TabIndex = 22;
             this.btLuu.Text = "Lưu";
             this.btLuu.UseVisualStyleBackColor = true;
+            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
             // 
             // btTroVe
             // 
@@ -107,6 +111,7 @@
             this.btTroVe.TabIndex = 21;
             this.btTroVe.Text = "Trở về";
             this.btTroVe.UseVisualStyleBackColor = true;
+            this.btTroVe.Click += new System.EventHandler(this.btTroVe_Click);
             // 
             // dtpNgayTraPhong
             // 
@@ -131,29 +136,32 @@
             // txtQuocTich
             // 
             this.txtQuocTich.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuocTich.Location = new System.Drawing.Point(196, 574);
+            this.txtQuocTich.Location = new System.Drawing.Point(196, 581);
             this.txtQuocTich.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuocTich.Name = "txtQuocTich";
             this.txtQuocTich.Size = new System.Drawing.Size(319, 30);
             this.txtQuocTich.TabIndex = 17;
+            this.txtQuocTich.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuocTich_KeyPress);
             // 
             // txtCMND
             // 
             this.txtCMND.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCMND.Location = new System.Drawing.Point(196, 433);
+            this.txtCMND.Location = new System.Drawing.Point(196, 440);
             this.txtCMND.Margin = new System.Windows.Forms.Padding(4);
             this.txtCMND.Name = "txtCMND";
             this.txtCMND.Size = new System.Drawing.Size(319, 30);
             this.txtCMND.TabIndex = 16;
+            this.txtCMND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCMND_KeyPress);
             // 
             // txtSDT
             // 
             this.txtSDT.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSDT.Location = new System.Drawing.Point(196, 304);
+            this.txtSDT.Location = new System.Drawing.Point(196, 311);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(4);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(319, 30);
             this.txtSDT.TabIndex = 18;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // txtPhong
             // 
@@ -168,21 +176,23 @@
             // txtTuoi
             // 
             this.txtTuoi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTuoi.Location = new System.Drawing.Point(196, 181);
+            this.txtTuoi.Location = new System.Drawing.Point(196, 187);
             this.txtTuoi.Margin = new System.Windows.Forms.Padding(4);
             this.txtTuoi.Name = "txtTuoi";
             this.txtTuoi.Size = new System.Drawing.Size(319, 30);
             this.txtTuoi.TabIndex = 14;
+            this.txtTuoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTuoi_KeyPress);
             // 
             // txtHoTen
             // 
             this.txtHoTen.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTen.Location = new System.Drawing.Point(196, 82);
+            this.txtHoTen.Location = new System.Drawing.Point(196, 89);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(4);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(319, 30);
             this.txtHoTen.TabIndex = 13;
             this.txtHoTen.TextChanged += new System.EventHandler(this.TxtHoTen_TextChanged);
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
             // 
             // lbQuocTich
             // 
@@ -221,7 +231,7 @@
             // 
             this.lbTuoi.AutoSize = true;
             this.lbTuoi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTuoi.Location = new System.Drawing.Point(128, 190);
+            this.lbTuoi.Location = new System.Drawing.Point(127, 190);
             this.lbTuoi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTuoi.Name = "lbTuoi";
             this.lbTuoi.Size = new System.Drawing.Size(52, 23);
@@ -232,7 +242,7 @@
             // 
             this.lbNgayTraPhong.AutoSize = true;
             this.lbNgayTraPhong.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNgayTraPhong.Location = new System.Drawing.Point(665, 443);
+            this.lbNgayTraPhong.Location = new System.Drawing.Point(662, 441);
             this.lbNgayTraPhong.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNgayTraPhong.Name = "lbNgayTraPhong";
             this.lbNgayTraPhong.Size = new System.Drawing.Size(150, 23);
@@ -243,7 +253,7 @@
             // 
             this.lbNgayDatPhong.AutoSize = true;
             this.lbNgayDatPhong.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNgayDatPhong.Location = new System.Drawing.Point(665, 313);
+            this.lbNgayDatPhong.Location = new System.Drawing.Point(658, 313);
             this.lbNgayDatPhong.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNgayDatPhong.Name = "lbNgayDatPhong";
             this.lbNgayDatPhong.Size = new System.Drawing.Size(154, 23);
@@ -319,6 +329,7 @@
         }
 
         #endregion
+        //public string ValueChonPhong = "";
 
         private System.Windows.Forms.Button btHuy;
         private System.Windows.Forms.Button btDanhSachPhong;
