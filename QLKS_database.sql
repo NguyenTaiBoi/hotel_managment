@@ -49,7 +49,13 @@ CONSTRAINT [PK_soPhong] PRIMARY KEY CLUSTERED
 	[soPhong] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+alter table PHONG add moTa varchar (100)
 
+insert into PHONG(soPhong,loaiPhong,giaPhong,moTa) 
+values ('1','VIP','1000000','kec')
+
+
+select @@VERSION
 /*table Nhan Vien*/
 CREATE TABLE NHANVIEN
 (
@@ -121,6 +127,14 @@ CONSTRAINT [PK_loaiPhong] PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
+alter table LOAIPHONG drop column sodichvu
+alter table LOAIPHONG drop column maDV
+
+insert into LOAIPHONG(loaiPhong,phi)
+values ('VIP','1000000')
+
+insert into LOAIPHONG(loaiPhong,phi)
+values ('Thuong','700000')
 /* foreign key*/
 
 --Reference: CHITIETPHONG_KHACHHANG (table: CHITIETPHONG)
@@ -158,5 +172,3 @@ ALTER TABLE DICHVU ADD CONSTRAINT DICHVU_NHANVIEN
 ALTER TABLE DICHVU ADD CONSTRAINT LOAIPHONG_DICHVU
     FOREIGN KEY (maDV)
     REFERENCES DICHVU (maDV);
-
-	

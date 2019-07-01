@@ -11,11 +11,13 @@ namespace DTO
     {
         private string soPhong;
         private string loaiPhong;
-        private decimal giaPhong;
+        private string giaPhong;
+        public string moTa;
 
         public string SoPhong { get => soPhong; set => soPhong = value; }
         public string LoaiPhong { get => loaiPhong; set => loaiPhong = value; }
-        public decimal GiaPhong { get => giaPhong; set => giaPhong = value; }
+        public string GiaPhong { get => giaPhong; set => giaPhong = value; }
+        public string MoTa { get => moTa; set => moTa = value; }
 
         //public PhongDTO(string soPhong,string loaiPhong,decimal giaPhong)
         //{

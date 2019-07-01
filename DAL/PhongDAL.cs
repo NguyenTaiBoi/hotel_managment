@@ -129,6 +129,7 @@ namespace DAL
             query += "WHERE ([soPhong] LIKE CONKAT ('%',@key,'%')) ";
             query += "OR ([loaiPhong] LIKE CONKAT ('%',@key,'%')) ";
             query += "OR ([giaPhong] LIKE CONKAT ('%',@key,'%'))";
+            query += "OR ([moTa] LIKE CONKAT ('%',@key,'%'))";
             List<PhongDTO> lsPhong = new List<PhongDTO>();
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -150,8 +151,8 @@ namespace DAL
                                 PhongDTO phong = new PhongDTO();
                                 phong.SoPhong = reader["soPhong"].ToString();
                                 phong.LoaiPhong = reader["loaiPhong"].ToString();
-                                phong.GiaPhong = decimal.Parse(reader["ngaysinh"].ToString());
-
+                                phong.GiaPhong = reader["giaPhong"].ToString();
+                                phong.MoTa = reader["moTa"].ToString();
                                 lsPhong.Add(phong);
                             }
                         }
@@ -169,57 +170,60 @@ namespace DAL
             MessageBox.Show("đã tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
             return true;
         }
+
+
+
+        public List<PhongDTO> select()
+        {
+            string query = string.Empty;
+            query += "SELECT *";
+            query += "FROM [PHONG]";
+
+            List<PhongDTO> lsPhong = new List<PhongDTO>();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                PhongDTO phong = new PhongDTO();
+                                phong.SoPhong = reader["soPhong"].ToString();
+                                phong.LoaiPhong = reader["loaiPhong"].ToString();
+                                phong.GiaPhong = reader["giaPhong"].ToString();
+                                phong.MoTa = reader["moTa"].ToString();
+                                lsPhong.Add(phong);
+                            }
+                        }
+
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return lsPhong;
+        }
+
     }
 }
 
-    //    public List<PhongDTO> select()
-    //    {
-    //        string query = string.Empty;
-    //        query += "SELECT *";
-    //        query += "FROM [PHONG]";
-
-    //        List<PhongDTO> lsPhong = new List<PhongDTO>();
-
-    //        using (SqlConnection con = new SqlConnection(ConnectionString))
-    //        {
-
-    //            using (SqlCommand cmd = new SqlCommand())
-    //            {
-    //                cmd.Connection = con;
-    //                cmd.CommandType = System.Data.CommandType.Text;
-    //                cmd.CommandText = query;
-
-    //                try
-    //                {
-    //                    con.Open();
-    //                    SqlDataReader reader = null;
-    //                    reader = cmd.ExecuteReader();
-    //                    if (reader.HasRows == true)
-    //                    {
-    //                        while (reader.Read())
-    //                        {
-    //                            PhongDTO phong = new PhongDTO();
-    //                            phong.SoPhong = reader["soPhong"].ToString();
-    //                            phong.LoaiPhong = reader["loaiPhong"].ToString();
-    //                            phong.GiaPhong = decimal.Parse(reader["ngaysinh"].ToString());
-
-    //                            lsPhong.Add(phong);
-    //                        }
-    //                    }
-
-    //                    con.Close();
-    //                    con.Dispose();
-    //                }
-    //                catch (Exception)
-    //                {
-    //                    con.Close();
-    //                    return null;
-    //                }
-    //            }
-    //        }
-    //        return lsPhong;
-    //    }
-    //}
 
 
 
