@@ -133,7 +133,7 @@ namespace DAL
             return true;
         }
 
-        public bool tiemkiem(KhachHangDTO key)
+        public List<KhachHangDTO> timkiem(string key)
         {
             string query = string.Empty;
             query += "SELECT * ";
@@ -154,6 +154,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@key", key);
                     try
                     {
                         con.Open();
@@ -181,64 +182,64 @@ namespace DAL
                     catch (Exception )
                     {
                         con.Close();
-                        MessageBox.Show("không tìm thấy khách hàng", "thông báo", MessageBoxButtons.OK);
-                        return false;
+                        //MessageBox.Show("không tìm thấy khách hàng", "thông báo", MessageBoxButtons.OK);
+                        return null;
                     }
                 }
             }
-            MessageBox.Show("đã tìm thấy khách hàng", "thông báo", MessageBoxButtons.OK);
-            return true;
+            //MessageBox.Show("đã tìm thấy khách hàng", "thông báo", MessageBoxButtons.OK);
+            return lsKhachHang;
         }
 
-        //public List<KhachHangDTO> select()
-        //{
-        //    string query = string.Empty;
-        //    query += "SELECT *";
-        //    query += "FROM [KHACHHANG]";
+        public List<KhachHangDTO> select()
+        {
+            string query = string.Empty;
+            query += "SELECT *";
+            query += "FROM [KHACHHANG]";
 
-        //    List<KhachHangDTO> lsKhachHang = new List<KhachHangDTO>();
+            List<KhachHangDTO> lsKhachHang = new List<KhachHangDTO>();
 
-        //    using (SqlConnection con = new SqlConnection(ConnectionString))
-        //    {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
 
-        //        using (SqlCommand cmd = new SqlCommand())
-        //        {
-        //            cmd.Connection = con;
-        //            cmd.CommandType = System.Data.CommandType.Text;
-        //            cmd.CommandText = query;
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
 
-        //            try
-        //            {
-        //                con.Open();
-        //                SqlDataReader reader = null;
-        //                reader = cmd.ExecuteReader();
-        //                if (reader.HasRows == true)
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        KhachHangDTO khachhang = new KhachHangDTO();
-        //                        khachhang.MaKH = reader["maNV"].ToString();
-        //                        khachhang.Hoten = reader["hoten"].ToString();
-        //                        khachhang.Tuoi = int.Parse(reader["ngaysinh"].ToString());
-        //                        khachhang.Email = reader["gioitinh"].ToString();
-        //                        khachhang.Cmnd = reader["cmnd"].ToString();
-        //                        khachhang.Sdt = reader["sdt"].ToString();
-        //                        khachhang.Quoctich = reader["chucvu"].ToString();
-        //                        lsKhachHang.Add(khachhang);
-        //                    }
-        //                }
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                KhachHangDTO khachhang = new KhachHangDTO();
+                                khachhang.MaKH = reader["maNV"].ToString();
+                                khachhang.Hoten = reader["hoten"].ToString();
+                                khachhang.Tuoi = int.Parse(reader["ngaysinh"].ToString());
+                                khachhang.Email = reader["gioitinh"].ToString();
+                                khachhang.Cmnd = reader["cmnd"].ToString();
+                                khachhang.Sdt = reader["sdt"].ToString();
+                                khachhang.Quoctich = reader["chucvu"].ToString();
+                                lsKhachHang.Add(khachhang);
+                            }
+                        }
 
-        //                con.Close();
-        //                con.Dispose();
-        //            }
-        //            catch (Exception)
-        //            {
-        //                con.Close();
-        //                return null;
-        //            }
-        //        }
-        //    }
-        //    return lsKhachHang;
-        //}/*
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception)
+                    {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+            return lsKhachHang;
+        }
     }
 }

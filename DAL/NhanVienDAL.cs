@@ -186,7 +186,7 @@ namespace DAL
         public List<NhanVienDTO> timkiem(string key)
         {
             string query = string.Empty;
-            query += " SELECT [hoten],[maNV],[ngaysinh],[sdt],[cmnd],[gioitinh],[chucvu],[mkNV]";
+            query += " SELECT *";
             query += " FROM [NHANVIEN]";
             query += " WHERE ([maNV] LIKE CONCAT('%',@key,'%'))";
             query += " OR ([hoten] LIKE CONCAT('%',@key,'%'))";

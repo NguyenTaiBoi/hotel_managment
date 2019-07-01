@@ -97,7 +97,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
-                    // cmd.Parameters.AddWithValue("@soPhong", phong.SoPhong);
+                    cmd.Parameters.AddWithValue("@soPhong", phong.SoPhong);
                     cmd.Parameters.AddWithValue("@loaiPhong", phong.LoaiPhong);
                     cmd.Parameters.AddWithValue("@giaPhong", phong.GiaPhong);
                     try
@@ -119,17 +119,14 @@ namespace DAL
             return true;
         }
 
-
-
-        public bool timkiem(PhongDTO key)
+        public List<PhongDTO> select()
         {
             string query = string.Empty;
-            query += "SELECT * ";
-            query += "FROM [PHONG] ";
-            query += "WHERE ([soPhong] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([loaiPhong] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([giaPhong] LIKE CONKAT ('%',@key,'%'))";
+            query += "SELECT *";
+            query += "FROM [PHONG]";
+
             List<PhongDTO> lsPhong = new List<PhongDTO>();
+
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -138,6 +135,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
+
                     try
                     {
                         con.Open();
@@ -155,71 +153,70 @@ namespace DAL
                                 lsPhong.Add(phong);
                             }
                         }
+
                         con.Close();
                         con.Dispose();
                     }
                     catch (Exception)
                     {
                         con.Close();
-                        MessageBox.Show("không tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
-                        return false;
+                        return null;
                     }
                 }
             }
-            MessageBox.Show("đã tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
-            return true;
+            return lsPhong;
+        }
+
+
+        public List<PhongDTO> timkiem(string key)
+        {
+            string query = string.Empty;
+            query += "SELECT * ";
+            query += "FROM [PHONG] ";
+            query += "WHERE ([soPhong] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([loaiPhong] LIKE CONKAT ('%',@key,'%')) ";
+            query += "OR ([giaPhong] LIKE CONKAT ('%',@key,'%'))";
+            List<PhongDTO> lsPhong = new List<PhongDTO>();
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@key", key);
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = null;
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows == true)
+                        {
+                            while (reader.Read())
+                            {
+                                PhongDTO phong = new PhongDTO();
+                                phong.SoPhong = reader["soPhong"].ToString();
+                                phong.LoaiPhong = reader["loaiPhong"].ToString();
+                                phong.GiaPhong = decimal.Parse(reader["giaPhong"].ToString());
+
+                                lsPhong.Add(phong);
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    }
+                    catch (Exception)
+                    {
+                        con.Close();
+                        //MessageBox.Show("không tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
+                        return null;
+                    }
+                }
+            }
+            //MessageBox.Show("đã tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
+            return lsPhong;
         }
     }
 }
-
-    //    public List<PhongDTO> select()
-    //    {
-    //        string query = string.Empty;
-    //        query += "SELECT *";
-    //        query += "FROM [PHONG]";
-
-    //        List<PhongDTO> lsPhong = new List<PhongDTO>();
-
-    //        using (SqlConnection con = new SqlConnection(ConnectionString))
-    //        {
-
-    //            using (SqlCommand cmd = new SqlCommand())
-    //            {
-    //                cmd.Connection = con;
-    //                cmd.CommandType = System.Data.CommandType.Text;
-    //                cmd.CommandText = query;
-
-    //                try
-    //                {
-    //                    con.Open();
-    //                    SqlDataReader reader = null;
-    //                    reader = cmd.ExecuteReader();
-    //                    if (reader.HasRows == true)
-    //                    {
-    //                        while (reader.Read())
-    //                        {
-    //                            PhongDTO phong = new PhongDTO();
-    //                            phong.SoPhong = reader["soPhong"].ToString();
-    //                            phong.LoaiPhong = reader["loaiPhong"].ToString();
-    //                            phong.GiaPhong = decimal.Parse(reader["ngaysinh"].ToString());
-
-    //                            lsPhong.Add(phong);
-    //                        }
-    //                    }
-
-    //                    con.Close();
-    //                    con.Dispose();
-    //                }
-    //                catch (Exception)
-    //                {
-    //                    con.Close();
-    //                    return null;
-    //                }
-    //            }
-    //        }
-    //        return lsPhong;
-    //    }
-    //}
-
-
 
