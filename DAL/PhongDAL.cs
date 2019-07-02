@@ -119,54 +119,6 @@ namespace DAL
             return true;
         }
 
-        public List<PhongDTO> select()
-        {
-            string query = string.Empty;
-            query += "SELECT *";
-            query += "FROM [PHONG]";
-
-            List<PhongDTO> lsPhong = new List<PhongDTO>();
-
-            using (SqlConnection con = new SqlConnection(ConnectionString))
-            {
-
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = con;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.CommandText = query;
-
-                    try
-                    {
-                        con.Open();
-                        SqlDataReader reader = null;
-                        reader = cmd.ExecuteReader();
-                        if (reader.HasRows == true)
-                        {
-                            while (reader.Read())
-                            {
-                                PhongDTO phong = new PhongDTO();
-                                phong.SoPhong = reader["soPhong"].ToString();
-                                phong.LoaiPhong = reader["loaiPhong"].ToString();
-                                phong.GiaPhong = decimal.Parse(reader["ngaysinh"].ToString());
-
-                                lsPhong.Add(phong);
-                            }
-                        }
-
-                        con.Close();
-                        con.Dispose();
-                    }
-                    catch (Exception)
-                    {
-                        con.Close();
-                        return null;
-                    }
-                }
-            }
-            return lsPhong;
-        }
-
 
         public List<PhongDTO> timkiem(string key)
         {
@@ -199,13 +151,8 @@ namespace DAL
                                 PhongDTO phong = new PhongDTO();
                                 phong.SoPhong = reader["soPhong"].ToString();
                                 phong.LoaiPhong = reader["loaiPhong"].ToString();
-<<<<<<< HEAD
-                                phong.GiaPhong = decimal.Parse(reader["giaPhong"].ToString());
-
-=======
                                 phong.GiaPhong = reader["giaPhong"].ToString();
                                 phong.MoTa = reader["moTa"].ToString();
->>>>>>> 89fd210cfe49c4d35eb714bfc4125648652b10e2
                                 lsPhong.Add(phong);
                             }
                         }
@@ -277,9 +224,3 @@ namespace DAL
     }
 }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 89fd210cfe49c4d35eb714bfc4125648652b10e2
