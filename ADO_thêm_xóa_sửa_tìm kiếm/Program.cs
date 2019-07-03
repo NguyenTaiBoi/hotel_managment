@@ -16,7 +16,11 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new FormQuanLy());
+=======
+            Application.Run(new FormKinhDoanh());
+>>>>>>> 4bfa102ad4ad01dc157763309adab52bb86667d3
         }
     }
 }

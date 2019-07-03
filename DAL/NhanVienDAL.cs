@@ -237,7 +237,11 @@ namespace DAL
                     }
 
 
+<<<<<<< HEAD
                     catch (Exception)
+=======
+                    catch (Exception )
+>>>>>>> 4bfa102ad4ad01dc157763309adab52bb86667d3
                     {
                         con.Close();
                         return null;
