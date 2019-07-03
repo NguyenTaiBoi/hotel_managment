@@ -22,8 +22,8 @@ namespace DAL
         public bool them(PhongDTO phong)
         {
             string query = string.Empty;
-            query += "INSERT INTO [PHONG] ([soPhong], [loaiPhong], [giaPhong]) ";
-            query += "VALUES (@soPhong,@loaiPhong,@giaPhong)";
+            query += "INSERT INTO [PHONG] ([soPhong], [loaiPhong], [giaPhong], [moTa]) ";
+            query += "VALUES (@soPhong,@loaiPhong,@giaPhong,@moTa)";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -35,6 +35,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@soPhong", phong.SoPhong);
                     cmd.Parameters.AddWithValue("@loaiPhong", phong.LoaiPhong);
                     cmd.Parameters.AddWithValue("@giaPhong", phong.GiaPhong);
+                    cmd.Parameters.AddWithValue("@moTa", phong.MoTa);
                     try
                     {
                         con.Open();
@@ -88,7 +89,7 @@ namespace DAL
         public bool sua(PhongDTO phong)
         {
             string query = string.Empty;
-            query += "UPDATE [PHONG] SET [loaiPhong] = @loaiPhong, [giaPhong]=@giaPhong WHERE [soPhong] = @soPhong";
+            query += "UPDATE [PHONG] SET [loaiPhong] = @loaiPhong, [giaPhong]=@giaPhong, [moTa]=@moTa WHERE [soPhong] = @soPhong";
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
 
@@ -100,6 +101,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@soPhong", phong.SoPhong);
                     cmd.Parameters.AddWithValue("@loaiPhong", phong.LoaiPhong);
                     cmd.Parameters.AddWithValue("@giaPhong", phong.GiaPhong);
+                    cmd.Parameters.AddWithValue("@moTa", phong.MoTa);
                     try
                     {
                         con.Open();
@@ -120,57 +122,7 @@ namespace DAL
         }
 
 
-        public List<PhongDTO> timkiem(string key)
-        {
-            string query = string.Empty;
-            query += "SELECT * ";
-            query += "FROM [PHONG] ";
-            query += "WHERE ([soPhong] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([loaiPhong] LIKE CONKAT ('%',@key,'%')) ";
-            query += "OR ([giaPhong] LIKE CONKAT ('%',@key,'%'))";
-            query += "OR ([moTa] LIKE CONKAT ('%',@key,'%'))";
-            List<PhongDTO> lsPhong = new List<PhongDTO>();
-            using (SqlConnection con = new SqlConnection(ConnectionString))
-            {
-
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = con;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.CommandText = query;
-                    cmd.Parameters.AddWithValue("@key", key);
-                    try
-                    {
-                        con.Open();
-                        SqlDataReader reader = null;
-                        reader = cmd.ExecuteReader();
-                        if (reader.HasRows == true)
-                        {
-                            while (reader.Read())
-                            {
-                                PhongDTO phong = new PhongDTO();
-                                phong.SoPhong = reader["soPhong"].ToString();
-                                phong.LoaiPhong = reader["loaiPhong"].ToString();
-                                phong.GiaPhong = reader["giaPhong"].ToString();
-                                phong.MoTa = reader["moTa"].ToString();
-                                lsPhong.Add(phong);
-                            }
-                        }
-                        con.Close();
-                        con.Dispose();
-                    }
-                    catch (Exception)
-                    {
-                        con.Close();
-                        //MessageBox.Show("không tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
-                        return null;
-                    }
-                }
-            }
-            //MessageBox.Show("đã tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
-            return lsPhong;
-        }
-
+        
 
 
         public List<PhongDTO> select()

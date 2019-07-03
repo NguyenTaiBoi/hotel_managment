@@ -44,10 +44,7 @@ namespace GUI
 
 
 
-        private void dgvChonPhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
+
 
         private void btChonPhong_Click(object sender, EventArgs e)
         {

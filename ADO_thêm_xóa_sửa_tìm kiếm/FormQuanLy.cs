@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GUI;
+using BUS;
+using DTO;
 
 namespace GUI
 {
@@ -28,6 +30,16 @@ namespace GUI
             this.Hide();
             FormThemXoaSuaNhanVien ftxs = new FormThemXoaSuaNhanVien();
             ftxs.Show();
+        }
+
+        private void QuảnLýPhòngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormQLPhong fqlp = new FormQLPhong();
+            fqlp.Show();
+            PhongBUS phongbus = new PhongBUS();
+            List<PhongDTO> lsp = phongbus.select();
+            fqlp.Load_DatagridviewChonPhong1(lsp);
         }
     }
 }

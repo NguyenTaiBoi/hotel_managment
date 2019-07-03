@@ -237,7 +237,7 @@ namespace DAL
                     }
 
 
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         con.Close();
                         return null;

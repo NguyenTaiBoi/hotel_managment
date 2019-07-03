@@ -96,6 +96,12 @@
     <Compile Include="FormLeTan.Designer.cs">
       <DependentUpon>FormLeTan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormQLPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQLPhong.Designer.cs">
+      <DependentUpon>FormQLPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormQuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLeTan.resx">
       <DependentUpon>FormLeTan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormQLPhong.resx">
+      <DependentUpon>FormQLPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormQuanLy.resx">
       <DependentUpon>FormQuanLy.cs</DependentUpon>

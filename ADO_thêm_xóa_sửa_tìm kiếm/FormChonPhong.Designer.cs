@@ -51,7 +51,6 @@
             this.dgvChonPhong.RowTemplate.Height = 24;
             this.dgvChonPhong.Size = new System.Drawing.Size(862, 317);
             this.dgvChonPhong.TabIndex = 0;
-            this.dgvChonPhong.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChonPhong_CellContentClick);
             // 
             // btChonPhong
             // 

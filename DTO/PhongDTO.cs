@@ -12,7 +12,7 @@ namespace DTO
         private string soPhong;
         private string loaiPhong;
         private string giaPhong;
-        public string moTa;
+        private string moTa;
 
         public string SoPhong { get => soPhong; set => soPhong = value; }
         public string LoaiPhong { get => loaiPhong; set => loaiPhong = value; }
