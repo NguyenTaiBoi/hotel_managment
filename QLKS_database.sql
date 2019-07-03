@@ -49,9 +49,11 @@ CONSTRAINT [PK_soPhong] PRIMARY KEY CLUSTERED
 	[soPhong] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-alter table PHONG add moTa varchar (100)
+alter table PHONG add moTa [varchar] (100)
+
 
 insert into PHONG(soPhong,loaiPhong,giaPhong,moTa) 
+
 values ('1','VIP','1000000','kec')
 
 
