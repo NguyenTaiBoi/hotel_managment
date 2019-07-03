@@ -102,6 +102,28 @@ namespace GUI
         private void DgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            //int index = dgvNhanVien.CurrentRow.Index;
+            //txthoten.Text = dgvNhanVien.Rows[index].Cells[1].Value.ToString();
+            //txthoten.Text = txthoten.Text.Trim();
+            //txtngaysinh.Text = dgvNhanVien.Rows[index].Cells[2].Value.ToString();
+            //txtsdt.Text = dgvNhanVien.Rows[index].Cells[3].Value.ToString();
+            //txtgioitinh.Text = dgvNhanVien.Rows[index].Cells[4].Value.ToString();
+            //txtcmnd.Text = dgvNhanVien.Rows[index].Cells[5].Value.ToString();
+            //txtchucvu.Text = dgvNhanVien.Rows[index].Cells[6].Value.ToString();
+            //txtmanv.Text = dgvNhanVien.Rows[index].Cells[0].Value.ToString();
+            //txtmk.Text = dgvNhanVien.Rows[index].Cells[7].Value.ToString();
+            if(e.RowIndex>=0)
+            {
+                DataGridViewRow row = this.dgvNhanVien.Rows[e.RowIndex];
+                txthoten.Text = row.Cells["Họ tên"].Value.ToString();
+                txtmanv.Text = row.Cells["Mã nhân viên"].Value.ToString();
+                txtngaysinh.Text = row.Cells["Ngày sinh"].Value.ToString();
+                txtsdt.Text = row.Cells["Sđt"].Value.ToString();
+                txtgioitinh.Text = row.Cells["Giới tính"].Value.ToString();
+                txtcmnd.Text = row.Cells["Cmnd"].Value.ToString();
+                txtchucvu.Text = row.Cells["Chức vụ"].Value.ToString();
+                txtmk.Text = row.Cells["Mật khẩu"].Value.ToString();
+            }
         }
 
         
