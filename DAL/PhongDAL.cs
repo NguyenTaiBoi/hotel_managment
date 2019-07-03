@@ -118,7 +118,7 @@ namespace DAL
             MessageBox.Show("cập nhật phòng thành công", "thông báo", MessageBoxButtons.OK);
             return true;
         }
-<<<<<<< HEAD
+
         public List<PhongDTO> select()
         {
             string query = string.Empty;
@@ -166,8 +166,7 @@ namespace DAL
             }
             return lsPhong;
         }
-=======
->>>>>>> 38fbf210f3f2e2e5b807e5291e54e173ee5af23a
+
 
 
         public List<PhongDTO> timkiem(string key)
@@ -201,35 +200,9 @@ namespace DAL
                                 PhongDTO phong = new PhongDTO();
                                 phong.SoPhong = reader["soPhong"].ToString();
                                 phong.LoaiPhong = reader["loaiPhong"].ToString();
-<<<<<<< HEAD
-=======
-                                phong.GiaPhong = reader["giaPhong"].ToString();
-                                phong.MoTa = reader["moTa"].ToString();
-                                lsPhong.Add(phong);
-                            }
-                        }
-                        con.Close();
-                        con.Dispose();
-                    }
-                    catch (Exception)
-                    {
-                        con.Close();
-                        //MessageBox.Show("không tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
-                        return null;
-                    }
-                }
-            }
-            //MessageBox.Show("đã tìm thấy phòng", "thông báo", MessageBoxButtons.OK);
-            return lsPhong;
-        }
->>>>>>> 38fbf210f3f2e2e5b807e5291e54e173ee5af23a
-
-                                //phong.GiaPhong = decimal.Parse(reader["giaPhong"].ToString());
-
 
                                 phong.GiaPhong = reader["giaPhong"].ToString();
                                 phong.MoTa = reader["moTa"].ToString();
-
                                 lsPhong.Add(phong);
                             }
                         }
